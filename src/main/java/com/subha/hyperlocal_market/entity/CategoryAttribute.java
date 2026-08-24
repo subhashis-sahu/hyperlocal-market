@@ -15,6 +15,14 @@ import lombok.Setter;
 
 
 @Entity
+@Table(
+    uniqueConstraints = {
+        @UniqueConstraint(
+            name = "uk_category_attribute_slug",
+            columnNames = {"category_id", "slug"}
+        )
+    }
+)
 @Getter
 @Setter
 @NoArgsConstructor
@@ -34,7 +42,7 @@ public class CategoryAttribute {
     @Column(nullable = false)
     private String name;
     
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String slug;
 
     @Enumerated(EnumType.STRING)
@@ -52,7 +60,7 @@ public class CategoryAttribute {
     private boolean comparable;
 
     private Integer displayOrder;
-
+ 
     private boolean active = true;
 
     private LocalDateTime createdAt;
