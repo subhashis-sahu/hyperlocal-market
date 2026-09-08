@@ -34,5 +34,10 @@ public class PublicController {
     public List<ProductsList> getProductsByCategory(@PathVariable Long id){
         return pService.getAllProductsByCategories(id);
     }
+
+    @GetMapping("/products/search")
+    public List<ProductsList> searchProduct(@RequestParam  String prompt){
+        return pService.searchProduct(prompt);
+    }
     
 }

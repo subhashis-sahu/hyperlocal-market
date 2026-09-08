@@ -21,9 +21,7 @@ public class CategoryAttributeService {
     private final CategoryAttributeRepo categoryAttributeRepo;
     private final AttributeOptionRepo attributeOptionRepo;
 
-    public List<CategoryAttributeDto> getAttributesByCategory(
-            Long categoryId
-    ) {
+    public List<CategoryAttributeDto> getAttributesByCategory(Long categoryId) {
 
         List<CategoryAttribute> attributes =
                 categoryAttributeRepo

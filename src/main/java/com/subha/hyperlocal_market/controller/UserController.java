@@ -8,25 +8,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.subha.hyperlocal_market.config.JwtUtil;
+import com.subha.hyperlocal_market.dto.UsersProfileDto;
+import com.subha.hyperlocal_market.service.UserService;
 
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
 
     private final JwtUtil jwtUtil;
+    private final UserService userService;
 
-    UserController(JwtUtil jwtUtil) {
+    UserController(JwtUtil jwtUtil,UserService userService) {
         this.jwtUtil = jwtUtil;
+        this.userService=userService;
     }
 
     @GetMapping("/profile")
-    public ResponseEntity<String> getProfileInfo(
+    public ResponseEntity<UsersProfileDto> getProfileInfo(
             Authentication authentication) {
 
-        String phoneNumber = authentication.getName();
-
-        return ResponseEntity.ok(phoneNumber);
+        return ResponseEntity.ok(userService.profile(authentication));
     }
+
+    
 
 
     

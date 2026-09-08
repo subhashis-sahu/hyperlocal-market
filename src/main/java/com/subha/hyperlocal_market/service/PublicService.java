@@ -50,4 +50,12 @@ public class PublicService {
         return product;
     }
 
+    public List<ProductsList> searchProduct(String keyword) {
+        return listingRepo.searchProduct(keyword)
+            .stream()
+            .map(this::convertToProductList)
+            .collect(Collectors.toList());
+        
+    }
+
 }
